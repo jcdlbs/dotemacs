@@ -10,13 +10,15 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+(setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (defconst my-packages
-  '(company
-    company-c-headers
+  '(anzu
+    company
+    ;; company-c-headers
     ggtags
     helm
     helm-gtags
@@ -66,7 +68,10 @@
     nim-mode
     rust-mode
     scala-mode2
-    simple-httpd))
+    simple-httpd
+    irony
+    company-irony
+    flycheck-irony))
 
 (defun install-packages ()
   "Install all required packages."
@@ -81,11 +86,11 @@
 
 ;; setup ggtags
 (require 'ggtags)
-(add-hook 'prog-mode-hook 'ggtags-mode)
-;; (add-hook 'c-mode-common-hook
-;;           (lambda ()
-;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-;;               (ggtags-mode 1))))
+;;(add-hook 'prog-mode-hook 'ggtags-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1))))
 
 (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
 (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
@@ -121,8 +126,11 @@
 (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
 (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
 
+
+(when (executable-find "curl")
+  (setq helm-google-suggest-use-curl-p t))
+
 (setq
- helm-google-suggest-use-curl-p t
  helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
  helm-quick-update t ; do not display invisible candidates
  helm-idle-delay 0.01 ; be idle for this many seconds, before updating in delayed sources.
@@ -219,20 +227,20 @@
 
 
 
-;; setup cedet
+;; ;; setup cedet
 (require 'cc-mode)
-(require 'semantic)
+;; (require 'semantic)
 
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(global-semantic-stickyfunc-mode 1)
-(global-semantic-idle-summary-mode 1)
+;; (global-semanticdb-minor-mode 1)
+;; (global-semantic-idle-scheduler-mode 1)
+;; (global-semantic-stickyfunc-mode 1)
+;; (global-semantic-idle-summary-mode 1)
 
-(semantic-mode 1)
+;; (semantic-mode 1)
 
-;; Enable EDE only in C/C++
-(require 'ede)
-(global-ede-mode)
+;; ;; Enable EDE only in C/C++
+;; (require 'ede)
+;; (global-ede-mode)
 
 
 ;; function-args
@@ -244,12 +252,12 @@
 ;; company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-;;(delete 'company-semantic company-backends)
+(delete 'company-semantic company-backends)
 (define-key c-mode-map  [(control tab)] 'company-complete)
 (define-key c++-mode-map  [(control tab)] 'company-complete)
 
 ;; company-c-headers
-(add-to-list 'company-backends 'company-c-headers)
+;; (add-to-list 'company-backends 'company-c-headers)
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -372,6 +380,7 @@
 (add-to-list 'auto-mode-alist '("\\.ctp\\'" . web-mode))
 
 ;; Package: flycheck
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 (add-hook 'prog-mode-hook 'flycheck-mode)
 
 ;; Package: php-refactor-mode
@@ -417,6 +426,32 @@
 ;; Package: kibit-mode
 ;; (require 'kibit-mode)
 ;; (add-hook 'clojure-mode-hook 'kibit-mode)
+
+
+;; EDE stuff
+;; (ede-cpp-root-project "UniBrawl" :file "~/src/UniBrawl/CMakeLists.txt")
+
+
+;; Package: irony
+(require 'irony)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; Package: flycheck-irony
+(require 'flycheck-irony)
+(eval-after-load 'flycheck
+  '(add-to-list 'flycheck-checkers 'irony))
 
 (defun jesse-scratchpad ()
   (require 'geben)
@@ -466,6 +501,7 @@
  '(lazy-highlight-cleanup nil)
  '(linum-format " %6d ")
  '(magit-diff-use-overlays nil)
+ '(magit-use-overlays nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
  '(password-cache-expiry 3600)
  '(projectile-enable-caching t)
@@ -479,6 +515,24 @@
  '(sql-mysql-options (quote ("--prompt=mysql> ")))
  '(tool-bar-mode nil)
  '(tramp-backup-directory-alist (quote ((".*" . "~/.saves"))))
+ '(tramp-default-proxies-alist
+   (quote
+    (("localhost.localdomain" nil nil)
+     ("localhost" nil nil)
+     ((regexp-quote
+       (system-name))
+      nil nil)
+     ("aws10\\.jcodelabs\\.com\\'" "\\`root\\'" "/ssh:jdowell@%h:")
+     ("\\.liveelements\\.net\\'" "\\`root\\'" "/ssh:sqjesse@%h:")
+     ("172\\.20\\.6\\..*\\'" "\\`root\\'" "/ssh:sqjesse@%h:")
+     ("172\\.20\\.6\\..*\\'" nil "/ssh:sqjesse@le-vmh1.liveelements.net:")
+     ("ec2-54-160-101-231\\.compute-1\\.amazonaws\\.com" "\\`root\\'" "/ssh:jesse@%h:")
+     ("ec2-23-21-248-205\\.compute-1\\.amazonaws\\.com" "\\`root\\'" "/ssh:jesse@%h:")
+     ("niddk-jesse-dev.jcodelabs.com" "\\`root\\'" "/ssh:jesse@%h:")
+     ("issuetracker\\.nihbrain\\.com" "\\`root\\'" "/ssh:jdowell@%h:")
+     ("\\.nihbrain\\.com\\'" "\\`root\\'" "/ssh:jesse@%h:")
+     ("ec2-23-21-250-131\\.compute-1\\.amazonaws\\.com" "\\`root\\'" "/ssh:jesse@%h:")
+     ("\\.compute-1\\.amazonaws\\.com" "\\`root\\'" "/ssh:ec2-user@%h:"))))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(version-control t)
  '(window-number-meta-mode t)
