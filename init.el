@@ -45,7 +45,7 @@
     rainbow-delimiters
     ;; pcomplete-extension
     expand-region
-    idle-highlight-mode
+    ;; idle-highlight-mode
     js2-mode
     js2-refactor
     geben
@@ -54,7 +54,7 @@
     helm-themes
     lush-theme
     php-refactor-mode
-    php-auto-yasnippets
+    ;; php-auto-yasnippets
     ace-jump-mode
 ;;    ace-isearch
 ;;    kibit-mode
@@ -71,7 +71,8 @@
     simple-httpd
     irony
     company-irony
-    flycheck-irony))
+    flycheck-irony
+    elisp-slime-nav))
 
 (defun install-packages ()
   "Install all required packages."
@@ -255,6 +256,11 @@
 (delete 'company-semantic company-backends)
 (define-key c-mode-map  [(control tab)] 'company-complete)
 (define-key c++-mode-map  [(control tab)] 'company-complete)
+(global-set-key (kbd "C-<tab>") 'company-manual-begin)
+
+;; company-quickhelp
+(require 'company-quickhelp)
+(company-quickhelp-mode 1)
 
 ;; company-c-headers
 ;; (add-to-list 'company-backends 'company-c-headers)
@@ -280,8 +286,8 @@
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
-;; show unncessary whitespace that can mess up your diff
-(add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
+;; ;; show unncessary whitespace that can mess up your diff
+;; (add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
 
 ;; use space to indent by default
 ;;(setq-default indent-tabs-mode nil)
@@ -368,7 +374,7 @@
                 'helm-eshell-history)))
 
 ;; Package: idle-highlight-mode
-(add-hook 'prog-mode-hook 'idle-highlight-mode)
+;; (add-hook 'prog-mode-hook 'idle-highlight-mode)
 
 ;; Package: js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -390,8 +396,9 @@
 	  #'(lambda ()
 	      (php-enable-wordpress-coding-style)))
 
+;; following php-auto-yasnippets seems to have an issue with java mode
 ;; Package: php-auto-yasnippets
-(require 'php-auto-yasnippets)
+;;(require 'php-auto-yasnippets)
 
 ;; Package: ace-jump-mode
 (require 'ace-jump-mode)
@@ -427,6 +434,11 @@
 ;; (require 'kibit-mode)
 ;; (add-hook 'clojure-mode-hook 'kibit-mode)
 
+;; Package: clj-refactor
+(require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)))
+
 
 ;; EDE stuff
 ;; (ede-cpp-root-project "UniBrawl" :file "~/src/UniBrawl/CMakeLists.txt")
@@ -453,6 +465,13 @@
 (eval-after-load 'flycheck
   '(add-to-list 'flycheck-checkers 'irony))
 
+;; Package: elisp-slime-nav
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'turn-on-elisp-slime-nav-mode))
+
+;; sudo for eshell
+(require 'em-tramp)
+
 (defun jesse-scratchpad ()
   (require 'geben)
   (projectile-switch-project)
@@ -474,10 +493,6 @@
  '(comint-input-ignoredups t)
  '(company-idle-delay 2)
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (lush)))
- '(custom-safe-themes
-   (quote
-    ("3164a65923ef23e0f3dff9f9607b4da1e07ef1c3888d0f6878feef6c28357732" "c7cd81771525ff66c105413134cdf0330b0b5b88fd8096e5d56b0256872ba6c7" "1ba463f6ac329a56b38ae6ac8ca67c8684c060e9a6ba05584c90c4bffc8046c3" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "1e194b1010c026b1401146e24a85e4b7c545276845fc38b8c4b371c8338172ad" "d809ca3cef02087b48f3f94279b86feca896f544ae4a82b523fba823206b6040" default)))
  '(delete-old-versions t)
  '(dired-dwim-target t)
  '(dired-listing-switches "-alhv")
@@ -491,7 +506,7 @@
  '(flycheck-phpcs-standard "CakePHP")
  '(fringe-mode 10 nil (fringe))
  '(geben-pause-at-entry-line nil)
- '(global-hl-line-mode t)
+ '(global-hl-line-mode nil)
  '(global-prettify-symbols-mode t)
  '(helm-external-programs-associations (quote (("csv" . "oocalc"))))
  '(history-length 100)
@@ -538,14 +553,9 @@
  '(window-number-meta-mode t)
  '(winner-mode t)
  '(ws-butler-global-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
 
-(provide '.emacs)
-
-;;; .emacs ends here
 (put 'narrow-to-region 'disabled nil)
+
+(provide 'init)
+;;; init ends here
+(put 'upcase-region 'disabled nil)
