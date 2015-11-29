@@ -500,7 +500,7 @@
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(enable-recursive-minibuffers t)
- '(eshell-history-size 1000)
+ '(eshell-history-size 5000)
  '(explicit-shell-file-name "bash")
  '(flycheck-checker-error-threshold 2000)
  '(flycheck-phpcs-standard "CakePHP")
