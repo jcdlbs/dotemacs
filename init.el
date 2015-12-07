@@ -40,6 +40,8 @@
     clojure-cheatsheet
     clojure-mode
     clojure-snippets
+    align-cljlet
+    clj-refactor
     color-moccur
     diff-hl
     rainbow-delimiters
@@ -71,8 +73,10 @@
     simple-httpd
     irony
     company-irony
+    company-quickhelp
     flycheck-irony
-    elisp-slime-nav))
+    elisp-slime-nav
+    cmake-mode))
 
 (defun install-packages ()
   "Install all required packages."
