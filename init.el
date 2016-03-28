@@ -451,7 +451,11 @@
 ;; Package: irony
 (require 'irony)
 (add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode) ; not compatible with derived php-mode
+(add-hook 'c-mode-hook
+  (lambda ()
+    (unless (derived-mode-p 'php-mode)
+      (irony-mode))))
 (add-hook 'objc-mode-hook 'irony-mode)
 
 ;; replace the `completion-at-point' and `complete-symbol' bindings in
@@ -522,6 +526,9 @@
  '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
+ '(package-selected-packages
+   (quote
+    (perl6-mode zenburn-theme ws-butler window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters php-refactor-mode php-auto-yasnippets nim-mode magit lush-theme lua-mode json-mode js2-refactor idle-highlight-mode helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav dtrt-indent diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow color-moccur cmake-mode clues-theme clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu ample-theme align-cljlet ace-isearch)))
  '(password-cache-expiry 3600)
  '(projectile-enable-caching t)
  '(projectile-mode-line "Proj")
