@@ -24,7 +24,7 @@
     helm-gtags
     function-args
     ;;    clean-aindent-mode
-    ;;    dtrt-indent
+    dtrt-indent
     ;;    ws-butler
     yasnippet
     helm-c-yasnippet
@@ -57,7 +57,7 @@
     lush-theme
     php-refactor-mode
     ;; php-auto-yasnippets
-    ace-jump-mode
+;;    ace-jump-mode
 ;;    ace-isearch
 ;;    kibit-mode
     ess
@@ -76,7 +76,10 @@
     company-quickhelp
     flycheck-irony
     elisp-slime-nav
-    cmake-mode))
+    cmake-mode
+	;; helm-company
+	avy
+	))
 
 (defun install-packages ()
   "Install all required packages."
@@ -297,7 +300,7 @@
 ;;(setq-default indent-tabs-mode nil)
 
 ;; set appearance of a tab that is represented by 4 spaces
-;;(setq-default tab-width 4)
+(setq-default tab-width 4)
 
 ;; Compilation
 (global-set-key (kbd "<f5>") (lambda ()
@@ -318,9 +321,9 @@
 ;; (require 'clean-aindent-mode)
 ;; (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
-;; ;; Package: dtrt-indent
-;; (require 'dtrt-indent)
-;; (dtrt-indent-mode 1)
+;; Package: dtrt-indent
+(require 'dtrt-indent)
+(dtrt-indent-mode 1)
 
 ;; ;; Package: ws-butler
 ;;(require 'ws-butler)
@@ -353,7 +356,8 @@
 (global-undo-tree-mode)
 
 ;; Package: cider
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;;;;; following might be obsolete
+;;;;;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 					;(setq nrepl-hide-special-buffers t)
 
 ;; Package: rainbow-delimiters
@@ -405,8 +409,8 @@
 ;;(require 'php-auto-yasnippets)
 
 ;; Package: ace-jump-mode
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; (require 'ace-jump-mode)
+;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; Package: ace-isearch
 ;; (require 'ace-isearch)
@@ -480,6 +484,22 @@
 ;; sudo for eshell
 (require 'em-tramp)
 
+;; Package: emacs-eclim
+(require 'eclim)
+(global-eclim-mode)
+(require 'eclimd)
+(company-emacs-eclim-setup)
+
+;; ;; Packages: helm-company
+;; (eval-after-load 'company
+;;   '(progn
+;;      (define-key company-mode-map (kbd "C-:") 'helm-company)
+;;      (define-key company-active-map (kbd "C-:") 'helm-company)))
+
+;; Package: avy
+(require 'avy)
+(global-set-key (kbd "C-c j") 'avy-goto-char)
+
 (defun jesse-scratchpad ()
   (require 'geben)
   (projectile-switch-project)
@@ -504,6 +524,11 @@
  '(delete-old-versions t)
  '(dired-dwim-target t)
  '(dired-listing-switches "-alhv")
+ '(eclim-eclipse-dirs
+   (quote
+	("~/opt/eclipse" "/Applications/eclipse" "/usr/lib/eclipse" "/usr/local/lib/eclipse" "/usr/share/eclipse")))
+ '(eclim-executable "~/opt/eclipse/eclim")
+ '(eclim-java-documentation-root "/usr/share/javadoc/java")
  '(ediff-diff-options "-w")
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
@@ -517,9 +542,9 @@
  '(global-hl-line-mode nil)
  '(global-prettify-symbols-mode t)
  '(helm-external-programs-associations (quote (("csv" . "oocalc"))))
+ '(help-at-pt-display-when-idle t nil (help-at-pt))
  '(history-length 100)
  '(inhibit-startup-screen t)
- '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(kept-new-versions 6)
  '(lazy-highlight-cleanup nil)
  '(linum-format " %6d ")
@@ -528,7 +553,7 @@
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-    (perl6-mode zenburn-theme ws-butler window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters php-refactor-mode php-auto-yasnippets nim-mode magit lush-theme lua-mode json-mode js2-refactor idle-highlight-mode helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav dtrt-indent diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow color-moccur cmake-mode clues-theme clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu ample-theme align-cljlet ace-isearch)))
+	(perl6-mode zenburn-theme ws-butler window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters php-refactor-mode php-auto-yasnippets nim-mode magit lush-theme lua-mode json-mode js2-refactor idle-highlight-mode helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav dtrt-indent diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow color-moccur cmake-mode clues-theme clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu ample-theme align-cljlet ace-isearch)))
  '(password-cache-expiry 3600)
  '(projectile-enable-caching t)
  '(projectile-mode-line "Proj")
