@@ -14,3 +14,9 @@
 /tramp
 /url/
 /#init.el#
+/.mc-lists.elc
+/.org-id-locations
+/abbrev_defs
+/ede-projects.elc
+/workbench.xmi
+/session.*

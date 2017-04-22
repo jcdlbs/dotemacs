@@ -55,8 +55,8 @@
     skewer-mode
     helm-themes
     lush-theme
-    php-refactor-mode
-    ;; php-auto-yasnippets
+;;    php-refactor-mode
+;;    php-auto-yasnippets
 ;;    ace-jump-mode
 ;;    ace-isearch
 ;;    kibit-mode
@@ -183,11 +183,11 @@
 ;;(global-set-key (kbd "C-c C-p") 'helm-projectile)
 ;;(global-set-key (kbd "C-M-z") 'helm-resume)
 ;;(global-set-key (kbd "M-%") 'helm-regexp)
-;; ;; (global-set-key (kbd "M-/") 'company-complete)
-;; ;; (global-set-key (kbd "M-?") 'hippie-expand)
+(global-set-key (kbd "M-/") 'company-complete)
+(global-set-key (kbd "M-?") 'hippie-expand)
 ;; (global-set-key (kbd "M-?") 'hippie-expand)
+;;(global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
-
 
 (define-key 'help-command (kbd "C-f") 'helm-apropos)
 (define-key 'help-command (kbd "r") 'helm-info-emacs)
@@ -398,15 +398,16 @@
 (add-hook 'prog-mode-hook 'flycheck-mode)
 
 ;; Package: php-refactor-mode
-(require 'php-refactor-mode)
-(add-hook 'php-mode-hook 'php-refactor-mode)
-(add-hook 'php-mode-hook
-	  #'(lambda ()
-	      (php-enable-wordpress-coding-style)))
+;; (require 'php-refactor-mode)
+;; (add-hook 'php-mode-hook 'php-refactor-mode)
+;; (add-hook 'php-mode-hook
+;; 	  #'(lambda ()
+;; 	      (php-enable-wordpress-coding-style)))
 
 ;; following php-auto-yasnippets seems to have an issue with java mode
 ;; Package: php-auto-yasnippets
-;;(require 'php-auto-yasnippets)
+;; (require 'php-auto-yasnippets)
+;; (setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
 
 ;; Package: ace-jump-mode
 ;; (require 'ace-jump-mode)
@@ -514,13 +515,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(async-shell-command-buffer (quote rename-buffer))
  '(backup-by-copying t)
  '(backup-directory-alist (quote ((".*" . "~/.saves"))))
  '(column-number-mode t)
  '(comint-input-ignoredups t)
+ '(company-dabbrev-downcase nil)
  '(company-idle-delay 2)
  '(compilation-message-face (quote default))
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes
+   (quote
+	("0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" default)))
  '(delete-old-versions t)
  '(dired-dwim-target t)
  '(dired-listing-switches "-alhv")
@@ -544,16 +552,18 @@
  '(helm-external-programs-associations (quote (("csv" . "oocalc"))))
  '(help-at-pt-display-when-idle t nil (help-at-pt))
  '(history-length 100)
+ '(httpd-port 7080)
  '(inhibit-startup-screen t)
  '(kept-new-versions 6)
  '(lazy-highlight-cleanup nil)
  '(linum-format " %6d ")
  '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
+ '(menu-bar-mode nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-	(perl6-mode zenburn-theme ws-butler window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters php-refactor-mode php-auto-yasnippets nim-mode magit lush-theme lua-mode json-mode js2-refactor idle-highlight-mode helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav dtrt-indent diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow color-moccur cmake-mode clues-theme clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu ample-theme align-cljlet ace-isearch)))
+	(restclient restclient-helm php-mode perl6-mode zenburn-theme ws-butler window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters nim-mode magit lua-mode json-mode js2-refactor helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav dtrt-indent diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow cmake-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu ample-theme align-cljlet ace-isearch)))
  '(password-cache-expiry 3600)
  '(projectile-enable-caching t)
  '(projectile-mode-line "Proj")
@@ -561,11 +571,15 @@
  '(recentf-max-saved-items 50)
  '(recentf-mode t)
  '(save-place t nil (saveplace))
+ '(save-place-mode t)
  '(savehist-mode t)
  '(show-paren-mode t)
  '(sql-mysql-options (quote ("--prompt=mysql> ")))
  '(tool-bar-mode nil)
  '(tramp-backup-directory-alist (quote ((".*" . "~/.saves"))))
+ '(tramp-histfile-override "$HOME/.tramp_history")
+ '(undo-limit 800000)
+ '(undo-strong-limit 1200000)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(version-control t)
  '(window-number-meta-mode t)
