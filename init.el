@@ -71,10 +71,12 @@
 		 ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-selected-packages
 	 (quote
-		(smooth-scrolling nginx-mode neotree spacemacs-theme smart-mode-line company-emacs-eclim eclim diminish helm-descbinds use-package window-purpose helm-ag rjsx-mode restclient restclient-helm php-mode perl6-mode window-number web-mode undo-tree smartparens skewer-mode scala-mode2 rust-mode rainbow-delimiters nim-mode magit lua-mode json-mode js2-refactor helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region ess elisp-slime-nav diff-hl company-quickhelp company-irony color-theme-sanityinc-tomorrow cmake-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode anzu align-cljlet ace-isearch)))
+		(yasnippet multiple-cursors company cider clojure-mode flycheck projectile helm helm-core helm-swoop lush-theme avy smooth-scrolling nginx-mode neotree spacemacs-theme smart-mode-line company-emacs-eclim eclim diminish helm-descbinds use-package helm-ag rjsx-mode restclient restclient-helm php-mode window-number web-mode undo-tree smartparens skewer-mode rust-mode rainbow-delimiters magit lua-mode json-mode js2-refactor helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region elisp-slime-nav diff-hl company-quickhelp company-irony cmake-mode clojure-snippets clj-refactor)))
  '(password-cache-expiry 3600)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(projectile-enable-caching t)
  '(projectile-globally-ignored-files (quote ("TAGS" "GPATH" "GRTAGS" "GTAGS")))
+ '(projectile-mode-line "Proj")
  '(purpose-mode nil)
  '(purpose-preferred-prompt (quote auto))
  '(purpose-user-mode-purposes
@@ -676,11 +678,10 @@
 				 ("C-=" . er/expand-region)
 				 ("M-=" . er/expand-region)))
 
-(defun jesse-scratchpad ()
-  (require 'geben)
-  (projectile-switch-project)
-  (geben-set-breakpoint-call "UsersApiController->matchUsername")
-  )
+;; (defun jesse-scratchpad ()
+;;   (require 'geben)
+;;   (projectile-switch-project)
+;;   (geben-set-breakpoint-call "UsersApiController->matchUsername"))
 
 ;; ;;;;;;;;;;
 ;; ;;; save & shutdown when we get an "end of session" signal on dbus 
