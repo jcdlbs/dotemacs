@@ -1,7 +1,7 @@
-;;; .emacs --- My custom .emacs file
+;; .emacs --- My custom .emacs file
 
 ;;; Commentary:
-;; here's some commentary
+;;;;;; here's some commentary
 
 ;;; Code:
 
@@ -11,9 +11,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-	 [default bold shadow italic underline bold bold-italic bold])
+   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(async-shell-command-buffer (quote rename-buffer))
  '(backup-by-copying t)
  '(backup-directory-alist (quote ((".*" . "~/.saves"))))
@@ -22,16 +22,15 @@
  '(company-dabbrev-downcase nil)
  '(company-idle-delay 2)
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
-	 (quote
-		("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" default)))
+   (quote
+    ("0820d191ae80dcadc1802b3499f84c07a09803f2cb90b343678bdb03d225b26b" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" default)))
  '(delete-old-versions t)
  '(dired-dwim-target t)
  '(dired-listing-switches "-alhv")
  '(eclim-eclipse-dirs
-	 (quote
-		("~/opt/eclipse" "/Applications/eclipse" "/usr/lib/eclipse" "/usr/local/lib/eclipse" "/usr/share/eclipse")))
+   (quote
+    ("~/opt/eclipse" "/Applications/eclipse" "/usr/lib/eclipse" "/usr/local/lib/eclipse" "/usr/share/eclipse")))
  '(eclim-executable "~/opt/eclipse/eclim")
  '(eclim-java-documentation-root "/usr/share/javadoc/java")
  '(ediff-diff-options "-w")
@@ -39,10 +38,13 @@
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(enable-recursive-minibuffers t)
  '(eshell-history-size 5000)
+ '(exec-path
+   (quote
+    ("~/bin" "/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/usr/libexec/emacs/25.3/x86_64-redhat-linux-gnu")))
  '(explicit-shell-file-name "bash")
  '(fci-rule-color "#383838")
  '(flycheck-checker-error-threshold 2000)
- '(flycheck-phpcs-standard "CakePHP")
+ '(flycheck-phpcs-standard "PSR1")
  '(fringe-mode 10 nil (fringe))
  '(geben-pause-at-entry-line nil)
  '(global-hl-line-mode nil)
@@ -62,16 +64,16 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
  '(nrepl-message-colors
-	 (quote
-		("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(nxml-slash-auto-complete-flag t)
  '(package-archives
-	 (quote
-		(("gnu" . "http://elpa.gnu.org/packages/")
-		 ("melpa" . "http://melpa.milkbox.net/packages/"))))
+   (quote
+    (("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
-	 (quote
-		(yasnippet multiple-cursors company cider clojure-mode flycheck projectile helm helm-core helm-swoop lush-theme avy smooth-scrolling nginx-mode neotree spacemacs-theme smart-mode-line company-emacs-eclim eclim diminish helm-descbinds use-package helm-ag rjsx-mode restclient restclient-helm php-mode window-number web-mode undo-tree smartparens skewer-mode rust-mode rainbow-delimiters magit lua-mode json-mode js2-refactor helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region elisp-slime-nav diff-hl company-quickhelp company-irony cmake-mode clojure-snippets clj-refactor)))
+   (quote
+    (markdown-mode yasnippet multiple-cursors company cider clojure-mode flycheck projectile helm helm-core helm-swoop lush-theme avy smooth-scrolling nginx-mode neotree spacemacs-theme smart-mode-line company-emacs-eclim eclim diminish helm-descbinds use-package helm-ag rjsx-mode restclient restclient-helm php-mode window-number web-mode undo-tree smartparens skewer-mode rust-mode rainbow-delimiters magit lua-mode json-mode js2-refactor helm-themes helm-projectile helm-proc helm-gtags helm-c-yasnippet ggtags geben function-args flycheck-rust flycheck-irony f expand-region elisp-slime-nav diff-hl company-quickhelp company-irony cmake-mode clojure-snippets clj-refactor)))
  '(password-cache-expiry 3600)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(projectile-enable-caching t)
@@ -80,34 +82,35 @@
  '(purpose-mode nil)
  '(purpose-preferred-prompt (quote auto))
  '(purpose-user-mode-purposes
-	 (quote
-		((java-mode . edit)
-		 (prog-mode . edit)
-		 (org-mode . edit)
-		 (fundamental-mode . edit)
-		 (web-mode . edit)
-		 (js-mode . edit)
-		 (js2-mode . edit)
-		 (lisp-mode . edit)
-		 (php-mode . edit)
-		 (dired . nav)
-		 (term-mode . terminal)
-		 (ansi-term-mode . terminal)
-		 (eshell-mode . terminal)
-		 (shell-mode . terminal)
-		 (compilation-mode . messages))))
+   (quote
+    ((java-mode . edit)
+     (prog-mode . edit)
+     (org-mode . edit)
+     (fundamental-mode . edit)
+     (web-mode . edit)
+     (js-mode . edit)
+     (js2-mode . edit)
+     (lisp-mode . edit)
+     (php-mode . edit)
+     (dired . nav)
+     (term-mode . terminal)
+     (ansi-term-mode . terminal)
+     (eshell-mode . terminal)
+     (shell-mode . terminal)
+     (compilation-mode . messages))))
  '(purpose-user-name-purposes (quote (("*shell*" . terminal) ("*eshell*" . terminal))))
  '(recentf-max-menu-items 25)
  '(recentf-max-saved-items 50)
  '(recentf-mode t)
+ '(ring-bell-function (quote ignore))
  '(rm-text-properties
-	 (quote
-		(("\\` Ovwrt\\'"
-			(quote face)
-			(quote font-lock-warning-face))
-		 ("\\[[0-9]\\]"
-			(quote face)
-			(quote success)))))
+   (quote
+    (("\\` Ovwrt\\'"
+      (quote face)
+      (quote font-lock-warning-face))
+     ("\\[[0-9]\\]"
+      (quote face)
+      (quote success)))))
  '(save-place-mode t nil (saveplace))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -126,31 +129,31 @@
  '(tool-bar-mode nil)
  '(tramp-backup-directory-alist (quote ((".*" . "~/.saves"))))
  '(tramp-default-method "ssh")
- '(tramp-histfile-override "$HOME/.tramp_history")
+ '(tramp-histfile-override "~/.tramp_history")
  '(undo-limit 800000)
  '(undo-strong-limit 1200000)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
-	 (quote
-		((20 . "#BC8383")
-		 (40 . "#CC9393")
-		 (60 . "#DFAF8F")
-		 (80 . "#D0BF8F")
-		 (100 . "#E0CF9F")
-		 (120 . "#F0DFAF")
-		 (140 . "#5F7F5F")
-		 (160 . "#7F9F7F")
-		 (180 . "#8FB28F")
-		 (200 . "#9FC59F")
-		 (220 . "#AFD8AF")
-		 (240 . "#BFEBBF")
-		 (260 . "#93E0E3")
-		 (280 . "#6CA0A3")
-		 (300 . "#7CB8BB")
-		 (320 . "#8CD0D3")
-		 (340 . "#94BFF3")
-		 (360 . "#DC8CC3"))))
+   (quote
+    ((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
  '(version-control t)
  '(window-number-meta-mode t)
@@ -167,7 +170,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-;; (setq gc-cons-threshold 100000000)
+;; experiencing crashes with the default gc-cons-threshold so I'm
+;;bumping it up here. (garbage-collect)
+(setq gc-cons-threshold (* 1024 1024 100)) ; 100 megs
+
 (setq inhibit-startup-message t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -175,14 +181,18 @@
 (require 'package)
 (package-initialize)
 
+(use-package spacemacs-theme
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
 
 (use-package ggtags
   :config
   ;;(add-hook 'prog-mode-hook 'ggtags-mode)
   (add-hook 'c-mode-common-hook
-			(lambda ()
-			  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-				(ggtags-mode 1))))
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+                (ggtags-mode 1))))
 
   (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
   (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
@@ -198,88 +208,88 @@
   :diminish helm-mode
   :init
   (progn
-	(setq
-	 helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
-	 helm-quick-update t ; do not display invisible candidates
-	 helm-idle-delay 0.01 ; be idle for this many seconds, before updating in delayed sources.
-	 helm-input-idle-delay 0.01 ; be idle for this many seconds, before updating candidate buffer
-	 helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
+    (setq
+     helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
+     helm-quick-update t ; do not display invisible candidates
+     helm-idle-delay 0.01 ; be idle for this many seconds, before updating in delayed sources.
+     helm-input-idle-delay 0.01 ; be idle for this many seconds, before updating candidate buffer
+     helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
 
-	 ;; you can customize helm-do-grep to execute ack-grep
-	 ;; helm-grep-default-command "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
-	 ;; helm-grep-default-recurse-command "ack-grep -H --smart-case --no-group --no-color %e %p %f"
-	 helm-split-window-default-side 'other ;; open helm buffer in another window
-	 helm-split-window-in-side-p t ;; open helm buffer inside current window, not occupy whole other window
-	 helm-candidate-number-limit 500 ; limit the number of displayed canidates
-	 helm-M-x-requires-pattern 0	 ; show all candidates when set to 0
-	 helm-boring-file-regexp-list
-	 '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$") ; do not show these files in helm buffer
-	 helm-ff-file-name-history-use-recentf t
-										;helm-move-to-line-cycle-in-source t ; move to end or beginning of source
+     ;; you can customize helm-do-grep to execute ack-grep
+     ;; helm-grep-default-command "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
+     ;; helm-grep-default-recurse-command "ack-grep -H --smart-case --no-group --no-color %e %p %f"
+     helm-split-window-default-side 'other ;; open helm buffer in another window
+     helm-split-window-in-side-p t ;; open helm buffer inside current window, not occupy whole other window
+     helm-candidate-number-limit 500 ; limit the number of displayed canidates
+     helm-M-x-requires-pattern 0   ; show all candidates when set to 0
+     helm-boring-file-regexp-list
+     '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$") ; do not show these files in helm buffer
+     helm-ff-file-name-history-use-recentf t
+                                        ;helm-move-to-line-cycle-in-source t ; move to end or beginning of source
                                         ; when reaching top or bottom of source.
-	 ido-use-virtual-buffers t		; Needed in helm-buffers-list
-	 helm-buffers-fuzzy-matching t          ; fuzzy matching buffer names when non-nil
+     ido-use-virtual-buffers t    ; Needed in helm-buffers-list
+     helm-buffers-fuzzy-matching t          ; fuzzy matching buffer names when non-nil
                                         ; useful in helm-mini that lists buffers
 
-	 ))
-  
+     ))
+
   :config
   (progn
-	;; must set before helm-config,  otherwise helm use default
-	;; prefix "C-x c", which is inconvenient because you can
-	;; accidentially pressed "C-x C-c"
-	(setq
-	 helm-command-prefix-key "C-c h")
+    ;; must set before helm-config,    otherwise helm use default
+    ;; prefix "C-x c", which is inconvenient because you can
+    ;; accidentially pressed "C-x C-c"
+    (setq
+     helm-command-prefix-key "C-c h")
 
-	(require 'helm-config)
+    (require 'helm-config)
 
-	;; not sure if the following are required - maybe remove?
-	(require 'helm-eshell)
-	(require 'helm-files)
-	(require 'helm-grep)
+    ;; not sure if the following are required - maybe remove?
+    (require 'helm-eshell)
+    (require 'helm-files)
+    (require 'helm-grep)
 
 
-	(setq helm-buffers-favorite-modes (append helm-buffers-favorite-modes
-											  '(picture-mode artist-mode)))
-	(when (executable-find "curl")
-	  (setq helm-google-suggest-use-curl-p t))
+    (setq helm-buffers-favorite-modes (append helm-buffers-favorite-modes
+                                              '(picture-mode artist-mode)))
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
 
-	;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebihnd tab to do persistent action
-	;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-	;; (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+    ;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebihnd tab to do persistent action
+    ;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+    ;; (define-key helm-map (kbd "C-z")    'helm-select-action) ; list actions using C-z
 
-	(define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
-	(define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
-	(define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
+    (define-key helm-grep-mode-map (kbd "<return>")    'helm-grep-mode-jump-other-window)
+    (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
+    (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
 
-	(global-set-key (kbd "M-x") 'helm-M-x)
-	(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-	(global-set-key (kbd "C-x b") 'helm-mini)
-	;;(global-set-key (kbd "C-c h") 'helm-mini)
-	;;(global-set-key (kbd "C-x b") 'helm-for-files)
-	(global-set-key (kbd "C-x C-f") 'helm-find-files)
-	(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-	;;(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
-	(global-set-key (kbd "C-c h o") 'helm-occur)
-	;; (global-set-key (kbd "M-s o") 'helm-occur)
-	(global-set-key (kbd "C-c h g") 'helm-do-grep)
-	;;(global-set-key (kbd "M-g s") 'helm-do-grep)
-	(global-set-key (kbd "C-c h C-c w") 'helm-wikipedia-suggest)
-	(global-set-key (kbd "C-c h x") 'helm-register)
-	(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-	;;(global-set-key (kbd "C-c i") 'helm-imenu)
-	;;(global-set-key (kbd "C-c C-p") 'helm-projectile)
-	;;(global-set-key (kbd "C-M-z") 'helm-resume)
-	;;(global-set-key (kbd "M-%") 'helm-regexp)
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+    (global-set-key (kbd "C-x b") 'helm-mini)
+    ;;(global-set-key (kbd "C-c h") 'helm-mini)
+    ;;(global-set-key (kbd "C-x b") 'helm-for-files)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+    (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+    ;;(global-set-key (kbd "C-c <SPC>") 'helm-all-mark-rings)
+    (global-set-key (kbd "C-c h o") 'helm-occur)
+    ;; (global-set-key (kbd "M-s o") 'helm-occur)
+    (global-set-key (kbd "C-c h g") 'helm-do-grep)
+    ;;(global-set-key (kbd "M-g s") 'helm-do-grep)
+    (global-set-key (kbd "C-c h C-c w") 'helm-wikipedia-suggest)
+    (global-set-key (kbd "C-c h x") 'helm-register)
+    (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+    ;;(global-set-key (kbd "C-c i") 'helm-imenu)
+    ;;(global-set-key (kbd "C-c C-p") 'helm-projectile)
+    ;;(global-set-key (kbd "C-M-z") 'helm-resume)
+    ;;(global-set-key (kbd "M-%") 'helm-regexp)
 
-	(define-key 'help-command (kbd "C-f") 'helm-apropos)
-	(define-key 'help-command (kbd "r") 'helm-info-emacs)
-	(define-key 'help-command (kbd "C-l") 'helm-locate-library)
+    (define-key 'help-command (kbd "C-f") 'helm-apropos)
+    (define-key 'help-command (kbd "r") 'helm-info-emacs)
+    (define-key 'help-command (kbd "C-l") 'helm-locate-library)
 
 ;;; Save current position to mark ring
-	(add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
+    (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
 
-	(helm-mode 1)))
+    (helm-mode 1)))
 
 (use-package helm-descbinds
   :defer t
@@ -294,34 +304,34 @@
   (setq helm-gtags-prefix-key "\C-cg")
   :config
   (progn
-	(setq
-	 helm-gtags-ignore-case t
-	 helm-gtags-auto-update t
-	 helm-gtags-use-input-at-cursor t
-	 helm-gtags-pulse-at-cursor t
+    (setq
+     helm-gtags-ignore-case t
+     helm-gtags-auto-update t
+     helm-gtags-use-input-at-cursor t
+     helm-gtags-pulse-at-cursor t
 
-	 helm-gtags-suggested-key-mapping t
-	 )
+     helm-gtags-suggested-key-mapping t
+     )
 
-	;; Enable helm-gtags-mode in Dired so you can jump to any tag
-	;; when navigate project tree with Dired
-	(add-hook 'dired-mode-hook 'helm-gtags-mode)
+    ;; Enable helm-gtags-mode in Dired so you can jump to any tag
+    ;; when navigate project tree with Dired
+    (add-hook 'dired-mode-hook 'helm-gtags-mode)
 
-	;; Enable helm-gtags-mode in Eshell for the same reason as above
-	(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+    ;; Enable helm-gtags-mode in Eshell for the same reason as above
+    (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 
-	;; Enable helm-gtags-mode in languages that GNU Global supports
-	(add-hook 'c-mode-hook 'helm-gtags-mode)
-	(add-hook 'c++-mode-hook 'helm-gtags-mode)
-	(add-hook 'java-mode-hook 'helm-gtags-mode)
-	(add-hook 'asm-mode-hook 'helm-gtags-mode)
+    ;; Enable helm-gtags-mode in languages that GNU Global supports
+    (add-hook 'c-mode-hook 'helm-gtags-mode)
+    (add-hook 'c++-mode-hook 'helm-gtags-mode)
+    (add-hook 'java-mode-hook 'helm-gtags-mode)
+    (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-	;; key bindings
-	(define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-select)
-	(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-	(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-	(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-	(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)))
+    ;; key bindings
+    (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-select)
+    (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+    (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+    (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+    (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)))
 
 (use-package helm-projectile
   :config
@@ -350,15 +360,15 @@
 
 ;; company
 (use-package company
-	:diminish company-mode " C"
+  :diminish company-mode " C"
   :config
   (progn
-	(add-hook 'after-init-hook 'global-company-mode)
-	(delete 'company-semantic company-backends)
-	(define-key c-mode-map  [(control tab)] 'company-complete)
-	(define-key c++-mode-map  [(control tab)] 'company-complete)
-	(global-set-key (kbd "C-<tab>") 'company-manual-begin)
-	(global-set-key (kbd "M-/") 'company-complete)))
+    (add-hook 'after-init-hook 'global-company-mode)
+    (delete 'company-semantic company-backends)
+    (define-key c-mode-map  [(control tab)] 'company-complete)
+    (define-key c++-mode-map  [(control tab)] 'company-complete)
+    (global-set-key (kbd "C-<tab>") 'company-manual-begin)
+    (global-set-key (kbd "M-/") 'company-complete)))
 
 (use-package company-quickhelp
   :config
@@ -427,29 +437,30 @@
   :diminish yas-minor-mode " Y"
   :config
   (progn
-	(yas-global-mode -1)
-	(yas-reload-all)
-	(add-hook 'prog-mode-hook 'yas-minor-mode)))
+    (yas-global-mode -1)
+    (yas-reload-all)
+    (add-hook 'prog-mode-hook 'yas-minor-mode)))
 
 (use-package smartparens
   :config
   (progn
-		(require 'smartparens-config)
-		(add-hook 'prog-mode-hook #'smartparens-mode)
-		;; (show-smartparens-global-mode +1)
-	;; (smartparens-global-strict-mode 1)
-		;; (sp-use-smartparens-bindings)
-		))
+    (require 'smartparens-config)
+    (add-hook 'prog-mode-hook #'smartparens-mode)
+    ;; (show-smartparens-global-mode +1)
+    ;; (smartparens-global-strict-mode 1)
+    ;; (sp-use-smartparens-bindings)
+    ))
 
 (use-package projectile
   :diminish projectile-mode
   :config
   (progn
-	(projectile-mode)
+    (projectile-mode)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
-	;; attempts to deal with slow tramp issues
-	(setq projectile-mode-line "Proj")
-	(setq projectile-file-exists-remote-cache-expire (* 10 60))))
+    ;; attempts to deal with slow tramp issues
+    (setq projectile-mode-line "Proj")
+    (setq projectile-file-exists-remote-cache-expire (* 10 60))))
 
 (use-package window-number
   :config
@@ -457,7 +468,7 @@
 
 ;; Package: undo-tree
 (use-package undo-tree
-	:diminish undo-tree-mode
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
 
@@ -466,32 +477,32 @@
   (progn
 ;;;;; following might be obsolete
 ;;;;;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-;;(setq nrepl-hide-special-buffers t)
-	))
+    ;;(setq nrepl-hide-special-buffers t)
+    ))
 
 (use-package rainbow-delimiters
   :config
   (progn
-	;;(global-rainbow-delimiters-mode) ; disabled due to a bad interaction with helm
-	(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
+    ;;(global-rainbow-delimiters-mode) ; disabled due to a bad interaction with helm
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 
 (use-package diff-hl
   :config
   (global-diff-hl-mode))
 
-(use-package pcomplete-extension
-  :config
-  (progn
-	;; (add-hook 'eshell-mode-hook
-	;; 		  #'(lambda ()
-	;; 			  (define-key eshell-mode-map
-	;; 				[remap eshell-pcomplete]
-	;; 				'helm-esh-pcomplete)))
-	(add-hook 'eshell-mode-hook
-			  #'(lambda ()
-				  (define-key eshell-mode-map
-					(kbd "M-p")
-					'helm-eshell-history)))))
+;; (use-package pcomplete-extension
+;;   :config
+;;   (progn
+;;    ;; (add-hook 'eshell-mode-hook
+;;    ;;        #'(lambda ()
+;;    ;;          (define-key eshell-mode-map
+;;    ;;          [remap eshell-pcomplete]
+;;    ;;          'helm-esh-pcomplete)))
+;;    (add-hook 'eshell-mode-hook
+;;          #'(lambda ()
+;;            (define-key eshell-mode-map
+;;            (kbd "M-p")
+;;            'helm-eshell-history)))))
 
 ;; (use-package idle-highlight-mode
 ;;   :config
@@ -510,16 +521,16 @@
 (use-package flycheck
   :config
   (progn
-	(setq-default flycheck-emacs-lisp-load-path 'inherit)
-	(add-hook 'prog-mode-hook 'flycheck-mode)))
+    (setq-default flycheck-emacs-lisp-load-path 'inherit)
+    (add-hook 'prog-mode-hook 'flycheck-mode)))
 
 ;; (use-package php-refactor-mode
 ;;   :config
 ;;   (progn
-;; 	(add-hook 'php-mode-hook 'php-refactor-mode)
-;; 	(add-hook 'php-mode-hook
-;; 			  #'(lambda ()
-;; 				  (php-enable-wordpress-coding-style)))))
+;;    (add-hook 'php-mode-hook 'php-refactor-mode)
+;;    (add-hook 'php-mode-hook
+;;          #'(lambda ()
+;;            (php-enable-wordpress-coding-style)))))
 
 ;; following php-auto-yasnippets seems to have an issue with java mode
 ;; (use-package php-auto-yasnippets
@@ -534,16 +545,16 @@
 ;;   :config
 ;;   (global-ace-isearch-mode +1))
 
-;; Package: ess
-(use-package ess-site)
+;; ;; Package: ess
+;; (use-package ess-site)
 
 (use-package multiple-cursors
   :config
   (progn
-	(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-	(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-	(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-	(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
+    (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)))
 
 ;; misc
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
@@ -551,11 +562,11 @@
 ;;;; startup message using fortune if possible
 ;; (if (executable-find "fortune")
 ;;     (setq initial-scratch-message
-;; 	  (concat
-;; 	   initial-scratch-message
-;; 	   "\t;; "
-;; 	   (replace-regexp-in-string "\n" "\n\t;; " (shell-command-to-string "fortune"))
-;; 	   "\n")))
+;;      (concat
+;;       initial-scratch-message
+;;       "\t;; "
+;;       (replace-regexp-in-string "\n" "\n\t;; " (shell-command-to-string "fortune"))
+;;       "\n")))
 
 ;; (use-package kibit-mode
 ;;   :config
@@ -565,7 +576,7 @@
 (use-package clj-refactor
   :config
   (add-hook 'clojure-mode-hook (lambda ()
-								 (clj-refactor-mode 1))))
+                                 (clj-refactor-mode 1))))
 
 ;; EDE stuff
 ;; (ede-cpp-root-project "UniBrawl" :file "~/src/UniBrawl/CMakeLists.txt")
@@ -573,33 +584,33 @@
 (use-package irony
   :config
   (progn
-	(add-hook 'c++-mode-hook 'irony-mode)
-	;; (add-hook 'c-mode-hook 'irony-mode) ; not compatible with derived php-mode
-	(add-hook 'c-mode-hook
-			  (lambda ()
-				(unless (derived-mode-p 'php-mode)
-				  (irony-mode))))
-	(add-hook 'objc-mode-hook 'irony-mode)
+    (add-hook 'c++-mode-hook 'irony-mode)
+    ;; (add-hook 'c-mode-hook 'irony-mode) ; not compatible with derived php-mode
+    (add-hook 'c-mode-hook
+              (lambda ()
+                (unless (derived-mode-p 'php-mode)
+                  (irony-mode))))
+    (add-hook 'objc-mode-hook 'irony-mode)
 
-	;; replace the `completion-at-point' and `complete-symbol' bindings in
-	;; irony-mode's buffers by irony-mode's function
-	(defun my-irony-mode-hook ()
-	  (define-key irony-mode-map [remap completion-at-point]
-		'irony-completion-at-point-async)
-	  (define-key irony-mode-map [remap complete-symbol]
-		'irony-completion-at-point-async))
-	(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-	(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)))
+    ;; replace the `completion-at-point' and `complete-symbol' bindings in
+    ;; irony-mode's buffers by irony-mode's function
+    (defun my-irony-mode-hook ()
+      (define-key irony-mode-map [remap completion-at-point]
+        'irony-completion-at-point-async)
+      (define-key irony-mode-map [remap complete-symbol]
+        'irony-completion-at-point-async))
+    (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)))
 
 (use-package flycheck-irony
   :config
   (eval-after-load 'flycheck
-	'(add-to-list 'flycheck-checkers 'irony)))
+    '(add-to-list 'flycheck-checkers 'irony)))
 
 (use-package elisp-slime-nav
   :config
   (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-	(add-hook hook 'turn-on-elisp-slime-nav-mode)))
+    (add-hook hook 'turn-on-elisp-slime-nav-mode)))
 
 ;; sudo for eshell
 (use-package em-tramp)
@@ -613,19 +624,19 @@
   (company-emacs-eclim-setup))
 
 (use-package helm-swoop
-	:config
-	(progn
-		(global-set-key (kbd "M-i") 'helm-swoop)
-		(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-		(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-		(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+  :config
+  (progn
+    (global-set-key (kbd "M-i") 'helm-swoop)
+    (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+    (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+    (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-		;; When doing isearch, hand the word over to helm-swoop
-		(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-		(define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+    ;; When doing isearch, hand the word over to helm-swoop
+    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
 
-		;; Save buffer when helm-multi-swoop-edit complete
-		(setq helm-multi-swoop-edit-save t)))
+    ;; Save buffer when helm-multi-swoop-edit complete
+    (setq helm-multi-swoop-edit-save t)))
 
 ;; ;; Packages: helm-company
 ;; (eval-after-load 'company
@@ -642,41 +653,41 @@
 
 
 ;; (use-package spaceline
-;; 	:config
-;; 	(progn
-;; 		(require 'spaceline-config)
-;; 		(spaceline-emacs-theme)))
+;;    :config
+;;    (progn
+;;      (require 'spaceline-config)
+;;      (spaceline-emacs-theme)))
 
 ;;;;; this was breaking cider macroexpand
 ;; (use-package window-purpose
 ;;   :config
-;; 	(progn
-;; 		;; don't hijack helms bindings
-;; 		(define-key purpose-mode-map (kbd "C-x b") nil)
-;; 		(define-key purpose-mode-map (kbd "C-x C-f") nil)
-;; 		(purpose-mode)))
+;;    (progn
+;;      ;; don't hijack helms bindings
+;;      (define-key purpose-mode-map (kbd "C-x b") nil)
+;;      (define-key purpose-mode-map (kbd "C-x C-f") nil)
+;;      (purpose-mode)))
 
 ;; (use-package multi-term
 ;;   :init
 ;;   (setq multi-term-program "/bin/bash"))
 
 (use-package neotree
-	:bind ("<f8>" . neotree-toggle))
+  :bind ("<f8>" . neotree-toggle))
 
 ;; need to validate that this change works
 (use-package magit
-	:config
-	(add-hook 'git-commit-mode-hook
-						'(lambda () (auto-fill-mode 0))))
+  :config
+  (add-hook 'git-commit-mode-hook
+            '(lambda () (auto-fill-mode 0))))
 
 (use-package smooth-scrolling
-	:config
-	(smooth-scrolling-mode 1))
+  :config
+  (smooth-scrolling-mode 1))
 
 (use-package expand-region
-	:bind (("M-SPC" . hippie-expand)
-				 ("C-=" . er/expand-region)
-				 ("M-=" . er/expand-region)))
+  :bind (("M-SPC" . hippie-expand)
+         ("C-=" . er/expand-region)
+         ("M-=" . er/expand-region)))
 
 ;; (defun jesse-scratchpad ()
 ;;   (require 'geben)
@@ -714,7 +725,7 @@
 ;;              (kill-emacs) ) ) ) )
 
 ;; ;; DESKTOP_AUTOSTART_ID is set by the Gnome desktop manager when emacs
-;; ;; is autostarted.  We can use it to register as a client with gnome
+;; ;; is autostarted.    We can use it to register as a client with gnome
 ;; ;; SessionManager.
 ;; (dbus-call-method-asynchronously
 ;;  :session "org.gnome.SessionManager"
